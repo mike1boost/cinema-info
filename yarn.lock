@@ -1078,6 +1078,17 @@ boolbase@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
 
+bootstrap-4-react@0.0.56:
+  version "0.0.56"
+  resolved "https://registry.yarnpkg.com/bootstrap-4-react/-/bootstrap-4-react-0.0.56.tgz#b9af5c56b068012edfb08091ed22330a4800e1e8"
+  dependencies:
+    bootstrap-4-required "0.0.1"
+    fsts "0.0.44"
+
+bootstrap-4-required@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/bootstrap-4-required/-/bootstrap-4-required-0.0.1.tgz#9fba02588dcd2b743201161f19f973409644e8b4"
+
 bootstrap@^3.3.7:
   version "3.3.7"
   resolved "http://registry.npmjs.org/bootstrap/-/bootstrap-3.3.7.tgz#5a389394549f23330875a3b150656574f8a9eb71"
@@ -2824,6 +2835,10 @@ fsevents@^1.1.3, fsevents@^1.2.2:
   dependencies:
     nan "^2.9.2"
     node-pre-gyp "^0.10.0"
+
+fsts@0.0.44:
+  version "0.0.44"
+  resolved "https://registry.yarnpkg.com/fsts/-/fsts-0.0.44.tgz#5fd58e767edd542c7f8e5c8a3b0a7d2eea3bd328"
 
 function-bind@^1.1.1:
   version "1.1.1"
