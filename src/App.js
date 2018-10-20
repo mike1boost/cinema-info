@@ -1,7 +1,6 @@
 import * as React from 'react';
 import './App.css';
 import {getMovies} from './server-api'
-import ThemeSwitcher from './ThemeSwitcher'
 
 class App extends React.Component {
   constructor(props){
@@ -34,14 +33,14 @@ class App extends React.Component {
 
 List = () => (
   <div className="container">
-	<div className="cards">
+	<ul className="row cards">
   {
-    this.state.moviesList.map((movie, index) => <div className="card" key={index}>
+    this.state.moviesList.map((movie, index) => <li className="card col-sm-6 col-md-4 col-lg-3" key={index}>
     
 			 <span className="card-header">
         <img  src= {require('./images/cinema.jpeg')}  alt="cinema"></img>
 				<span className="card-title">
-					<h3>{movie.Title}</h3>
+					<h2>{movie.Title}</h2>
 				</span>
 			</span>
 			
@@ -52,13 +51,11 @@ List = () => (
 				Published: June 18th, 2015
 			</span>
 		
-    </div>
+    </li>
     )}
-	</div>
+	</ul>
 </div>
 );
-
-
 
 
 render() {
@@ -67,8 +64,7 @@ render() {
     <div >
       <header className="App-header">
         <h1 className="App-title">Herolo Cinema</h1>
-      </header>
-      <ThemeSwitcher/>
+      </header>      
        {this.List()} 
     </div>
   );
