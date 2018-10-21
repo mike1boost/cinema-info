@@ -29,19 +29,24 @@
 	  background-color: transparent;
   }
   .card-in{
+		display: flex;
+		flex-direction: column;
 	height: 100%;
-	border: #222 1px solid;
+	border: #222 3px solid;
 	background: rgba(24, 22, 22, 0.801);
   }
   img{
 	width: 100%;
 }
-  .card-details{
-	  padding: 15px;
-  }
-  .card-title {
+.card-title {
+	flex: 1 0 auto;
+	padding: 15px 15px 0 15px;
 	font-size: 20px;
 	color: rgb(115, 129, 247);
+  }
+
+  .card-details{
+	  padding: 15px;
   }
   .card-meta{
 	  padding-top: 10px;
