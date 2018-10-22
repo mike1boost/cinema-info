@@ -1,5 +1,6 @@
 import * as React from 'react';
-import Btnn from '../buttons/Edit'
+import DeleteModal from '../Modal/Delete'
+import EditModal from '../Modal/Edit'
 
 class moviesList extends React.Component {
   constructor(props){
@@ -23,16 +24,14 @@ class moviesList extends React.Component {
     // console.log(this.state.selectedMovie) 
   }
 
-  delete = (e) => {
-    const index = e.target.value;
-    this.props.onDelete(index);
-  }
+  
 
   
 
   List = () => (
   <div className="container">
-	<Btnn  onEdit={this.props.onEdit} selectedMovie={this.state.selectedMovie} onDelete={this.props.onDelete} />
+	<EditModal  onEdit={this.props.onEdit} selectedMovie={this.state.selectedMovie} />
+  <DeleteModal onDelete={this.props.onDelete} selectedMovie={this.state.selectedMovie} />
   <ul className="row cards">
   {
     this.props.movies.map((movie, index) => <li className="card col-sm-6 col-lg-4" key={index}>
@@ -45,8 +44,11 @@ class moviesList extends React.Component {
             <div>year:{index}</div>
             <div className="card-meta">Published: June 18th, 2015</div>
             <div>
-                <button   value={index}  onClick={this.delete} >Delete</button> 
-                <button data-toggle="modal" data-target="#sendModal" id="send-open" value={index} className="floating-send scroll-fadeout" aria-label="edit movie" onClick={this.onSelectMovie} >	
+                
+                <button data-toggle="modal" data-target="#deleteModal" id="send-open" value={index} className="floating-send scroll-fadeout" aria-label="edit movie" onClick={this.onSelectMovie} >	
+                    Delete
+                </button>
+                <button data-toggle="modal" data-target="#editModal" id="send-open" value={index} className="floating-send scroll-fadeout" aria-label="edit movie" onClick={this.onSelectMovie} >	
                     Edit
                 </button> 
             </div>

@@ -2,6 +2,7 @@ import * as React from 'react';
 import './App.css';
 import {getMovies} from './server-api'
 import MoviesList from './view/moviesList'
+import AddModal from './Modal/Add'
 
 class App extends React.Component {
   constructor(props){
@@ -30,7 +31,7 @@ class App extends React.Component {
         return movie_;
       }
     });
-    
+  
     this.setState(state => {
       return {
         moviesList:moviesListUpdated
@@ -38,8 +39,15 @@ class App extends React.Component {
     });
   }
 
-  onDelete = (movieIndex) => {
+  onDelete = (movie) => {
+    let movieIndex = -1; 
     const moviesList = this.state.moviesList;
+    for(let index in moviesList){
+      if(moviesList[index].id === movie.id){
+        movieIndex = index;
+      }
+    }
+    
     if (movieIndex > -1) {
       moviesList.splice(movieIndex, 1);
     }
@@ -51,29 +59,27 @@ class App extends React.Component {
     });
   }
 
-
-
-
-
-  
-  updateField=(field, value)=>{
-    this.setState((prevState)=>{
-        return{
-            selectedMovie:{
-                ...prevState.selectedMovie,
-                [field] : value
-            }
-        }
-    })
-}
+  addMovie = (movie) => {
+    
+    
+    this.setState(state => {
+      return {
+        moviesList:[...state.moviesList, movie]
+      };
+    });
+  }
 
 render() {
   return (
     <div >
       <header className="App-header">
         <h1 className="App-title">Herolo Cinema</h1>
-      </header>      
+      </header> 
+      <button data-toggle="modal" data-target="#addModal" id="send-open"  className="floating-send scroll-fadeout" aria-label="edit movie" onClick={this.onSelectMovie} >	
+        Add
+      </button>
        <MoviesList movies={this.state.moviesList} onEdit={this.onEdit} onDelete={this.onDelete}/>
+       <AddModal addMovie={this.addMovie}/>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import './Edit.css'
 
-class btnn extends React.Component {
+class editModal extends React.Component {
 
     constructor(props){
     super(props);
@@ -52,7 +52,7 @@ save = ()=>{
   
   return (
     <div >
-        <div id="sendModal" className="modal-send modal fade" aria-label="edit movie" aria-describedby="modal-send-header" role="dialog" aria-hidden="true">
+        <div id="editModal" className="modal-send modal fade" aria-label="edit movie" aria-describedby="modal-send-header" role="dialog" aria-hidden="true">
             <div className="modal-dialog">
                 <div className="modal-content">
                     <div className="modal-send-header" id="modal-send-header">
@@ -77,7 +77,7 @@ save = ()=>{
 
 }
 
-export default btnn;
+export default editModal;
 
 
 
