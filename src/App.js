@@ -37,6 +37,24 @@ class App extends React.Component {
       };
     });
   }
+
+  onDelete = (movieIndex) => {
+    const moviesList = this.state.moviesList;
+    if (movieIndex > -1) {
+      moviesList.splice(movieIndex, 1);
+    }
+    
+    this.setState(state => {
+      return {
+        moviesList:moviesList
+      };
+    });
+  }
+
+
+
+
+
   
   updateField=(field, value)=>{
     this.setState((prevState)=>{
@@ -55,7 +73,7 @@ render() {
       <header className="App-header">
         <h1 className="App-title">Herolo Cinema</h1>
       </header>      
-       <MoviesList movies={this.state.moviesList} onEdit={this.onEdit}/>
+       <MoviesList movies={this.state.moviesList} onEdit={this.onEdit} onDelete={this.onDelete}/>
     </div>
   );
 }

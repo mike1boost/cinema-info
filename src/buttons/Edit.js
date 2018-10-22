@@ -43,7 +43,7 @@ onUpdate = (e)=>{
 }
 
 save = ()=>{
-    console.log(this.state.selectedMovie);
+    // console.log(this.state.selectedMovie);
 
     this.props.onEdit(this.state.selectedMovie.id, this.state.selectedMovie);
 }
