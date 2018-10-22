@@ -2,17 +2,30 @@ import * as React from 'react';
 import './Edit.css'
 
 class btnn extends React.Component {
-  constructor(props){
+
+    constructor(props){
     super(props);
     this.state = {
         selectedMovie: {
-            title:"", 
-            year:0,
+            Title:"", 
+            Year:"",
+            id:""
         }
     }
   }
 
-  updateField=(field, value)=>{
+  componentDidUpdate(prevProps) {
+   
+    if (this.props.selectedMovie.id !== prevProps.selectedMovie.id) {
+      this.setState(()=>{
+        return{
+        selectedMovie:this.props.selectedMovie
+        }
+      });
+    }
+  }
+
+updateField=(field, value)=>{
     this.setState((prevState)=>{
         return{
             selectedMovie:{
@@ -32,10 +45,9 @@ onUpdate = (e)=>{
 save = ()=>{
     console.log(this.state.selectedMovie);
 
-    // this.props.onEdit(this.state.selectedUser);
+    this.props.onEdit(this.state.selectedMovie.id, this.state.selectedMovie);
 }
   
-
   render() {
   
   return (
@@ -45,13 +57,13 @@ save = ()=>{
                 <div className="modal-content">
                     <div className="modal-send-header" id="modal-send-header">
                            <h3>Edit movie</h3>
-                           <p>title:<input type="text" id="title" value={this.state.selectedMovie.title} onChange={this.onUpdate} /></p>
-                           <p>year:<input type="number" id="year" value={this.state.selectedMovie.year} onChange={this.onUpdate} /></p>
+                           <p>title:<input type="text" id="Title" value={this.state.selectedMovie.Title} onChange={this.onUpdate} /></p>
+                           <p>year:<input type="number" id="Year" value={this.state.selectedMovie.Year} onChange={this.onUpdate} /></p>
                             
                     </div>
                     
                     <footer>
-                        <button type="button" className="save" onClick={this.save} aria-label="update detailes">Save</button>
+                        <button type="button" className="save" data-dismiss="modal" onClick={this.save} aria-label="update detailes">Save</button>
                         <button type="button" className="cancel" data-dismiss="modal" aria-label="cancel edit">Cancel</button>
                     </footer>
                     
@@ -60,7 +72,6 @@ save = ()=>{
         </div>      
     
     </div>
-    
   );
 }
 

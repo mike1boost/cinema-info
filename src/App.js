@@ -18,9 +18,36 @@ class App extends React.Component {
       });       
   }
 
-  onEdit = () => {
-    console.log("edit me");
-  } 
+  componentDidUpdate(){
+    console.log(this.state.moviesList) 
+  }
+
+  onEdit = (movieId, movie) => {
+    const moviesListUpdated = this.state.moviesList.map((movie_, index) => {
+      if (movieId === movie_.id) {
+        return movie;
+      } else {
+        return movie_;
+      }
+    });
+    
+    this.setState(state => {
+      return {
+        moviesList:moviesListUpdated
+      };
+    });
+  }
+  
+  updateField=(field, value)=>{
+    this.setState((prevState)=>{
+        return{
+            selectedMovie:{
+                ...prevState.selectedMovie,
+                [field] : value
+            }
+        }
+    })
+}
 
 render() {
   return (
@@ -28,7 +55,7 @@ render() {
       <header className="App-header">
         <h1 className="App-title">Herolo Cinema</h1>
       </header>      
-       <MoviesList movies={this.state.moviesList}/>
+       <MoviesList movies={this.state.moviesList} onEdit={this.onEdit}/>
     </div>
   );
 }

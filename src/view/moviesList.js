@@ -4,18 +4,28 @@ import Btnn from '../buttons/Edit'
 class moviesList extends React.Component {
   constructor(props){
     super(props);
-    this.state={
-      moviesList:[],
-    };
+    this.state = {
+      selectedMovie: {
+          Title:"", 
+          Year:"",
+          id:""
+      }
+    }
   }
   
-  onEdit = () => {
-    console.log("edit me");
-  } 
+  onSelectMovie = (e) => {
+    const index = e.target.value;
+    const selectedMovie = this.props.movies[index];    
+    this.setState({selectedMovie})
+  }
+
+  componentDidUpdate(){
+    // console.log(this.state.selectedMovie) 
+  }
 
   List = () => (
   <div className="container">
-	<Btnn />
+	<Btnn  onEdit={this.props.onEdit} selectedMovie={this.state.selectedMovie} />
   <ul className="row cards">
   {
     this.props.movies.map((movie, index) => <li className="card col-sm-6 col-lg-4" key={index}>
@@ -25,11 +35,12 @@ class moviesList extends React.Component {
         <div className="card-details">
           <div className="card-data">
             <div>year:{movie.Year}</div>
+            <div>year:{index}</div>
             <div className="card-meta">Published: June 18th, 2015</div>
             <div>
                 <button type="button">Delete</button> 
             
-                <button data-toggle="modal" data-target="#sendModal" id="send-open" className="floating-send scroll-fadeout" aria-label="edit movie" >	
+                <button data-toggle="modal" data-target="#sendModal" id="send-open" value={index} className="floating-send scroll-fadeout" aria-label="edit movie" onClick={this.onSelectMovie} >	
                     Edit
                 </button> 
             </div>
@@ -42,43 +53,17 @@ class moviesList extends React.Component {
 </div>
 );
 
-
-
-
-
-
     render() {
         return(
          <div>
              {this.List()}
          </div>
         ); 
-    
     }
-
 }
-
 
 export default moviesList;
 
 
 
 
-//      this.props.movies.map((movie, index) => <li className="card col-sm-6 col-lg-4" key={index}>
-    //     <div className="card-in">
-    //         <img  src= {require('../images/cinema.jpeg')}  alt="cinema"></img>
-    //         <div className="card-details">
-    //         <h2 className="card-title same-height">{movie.Title}</h2>
-    //         <div>year:{movie.Year}</div>
-    //         <div className="card-meta">Published: June 18th, 2015</div>
-    //         <div>
-    //             <button type="button">Delete</button> 
-            
-    //             <button data-toggle="modal" data-target="#sendModal" id="send-open" className="floating-send scroll-fadeout" aria-label="edit movie" onClick={this.onEdit}>	
-    //                 Edit
-    //             </button> 
-    //         </div>  
-    //         </div>
-    //     </div>
-    //     </li>
-    

@@ -1,4 +1,4 @@
-
+const uuidv1 = require('uuid/v1');
      
     export async function  getMovies(){
         console.log("loading movies");
@@ -7,7 +7,8 @@
         movies.forEach(movie => {
             delete movie.imdbID 
             delete movie.Poster
-            delete movie.Type;    
+            delete movie.Type;
+            movie.id = uuidv1();
         });
         return movies;
     }
