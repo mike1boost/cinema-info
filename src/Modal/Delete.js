@@ -10,15 +10,15 @@ render() {
     
     return (
         <div >
-            <div id="deleteModal" className="modal-send modal fade" aria-label="edit movie" aria-describedby="modal-send-header" role="dialog" aria-hidden="true">
+            <div id="deleteModal" className="modal-send modal fade" role="dialog">
                 <div className="modal-dialog">
                     <div className="modal-content">
                         <div className="modal-send-header" id="modal-send-header">
                             <h3>Delete movie</h3>
                         </div>
                         <footer>
-                            <button type="button" className="delete" data-dismiss="modal" onClick={this.delete} aria-label="delete movie">Ok</button>
-                            <button type="button" className="cancel" data-dismiss="modal" aria-label="cancel delete">Cancel</button>
+                            <button type="button" id="btn-approve-modal" data-dismiss="modal" onClick={this.delete} >Ok</button>
+                            <button type="button" id="btn-cancel-modal" data-dismiss="modal" >Cancel</button>
                         </footer>    
                     </div>
                 </div>

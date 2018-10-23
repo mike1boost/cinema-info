@@ -19,10 +19,6 @@ class App extends React.Component {
       });       
   }
 
-  componentDidUpdate(){
-    console.log(this.state.moviesList) 
-  }
-
   onEdit = (movieId, movie) => {
     const moviesListUpdated = this.state.moviesList.map((movie_, index) => {
       if (movieId === movie_.id) {
@@ -60,8 +56,6 @@ class App extends React.Component {
   }
 
   addMovie = (movie) => {
-    
-    
     this.setState(state => {
       return {
         moviesList:[...state.moviesList, movie]
@@ -71,15 +65,15 @@ class App extends React.Component {
 
 render() {
   return (
-    <div >
+    <div className="app-container">
       <header className="App-header">
         <h1 className="App-title">Herolo Cinema</h1>
       </header> 
-      <button data-toggle="modal" data-target="#addModal" id="send-open"  className="floating-send scroll-fadeout" aria-label="edit movie" onClick={this.onSelectMovie} >	
+      <button data-toggle="modal" data-target="#addModal" id="btn-add"  >	
         Add
       </button>
        <MoviesList movies={this.state.moviesList} onEdit={this.onEdit} onDelete={this.onDelete}/>
-       <AddModal addMovie={this.addMovie}/>
+       <AddModal movies={this.state.moviesList} addMovie={this.addMovie}/>
     </div>
   );
 }

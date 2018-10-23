@@ -6,9 +6,12 @@ class moviesList extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      selectedMovie: {
+        selectedMovie: {
           Title:"", 
           Year:"",
+          Runtime:"",
+          Genre:"",
+          Director:"",
           id:""
       }
     }
@@ -20,17 +23,9 @@ class moviesList extends React.Component {
     this.setState({selectedMovie})
   }
 
-  componentDidUpdate(){
-    // console.log(this.state.selectedMovie) 
-  }
-
-  
-
-  
-
   List = () => (
   <div className="container">
-	<EditModal  onEdit={this.props.onEdit} selectedMovie={this.state.selectedMovie} />
+	<EditModal  onEdit={this.props.onEdit} selectedMovie={this.state.selectedMovie} movies={this.props.movies} />
   <DeleteModal onDelete={this.props.onDelete} selectedMovie={this.state.selectedMovie} />
   <ul className="row cards">
   {
@@ -40,16 +35,16 @@ class moviesList extends React.Component {
         <h2 className="card-title">{movie.Title}</h2>
         <div className="card-details">
           <div className="card-data">
-            <div>year:{movie.Year}</div>
-            <div>year:{index}</div>
-            <div className="card-meta">Published: June 18th, 2015</div>
-            <div>
-                
-                <button data-toggle="modal" data-target="#deleteModal" id="send-open" value={index} className="floating-send scroll-fadeout" aria-label="edit movie" onClick={this.onSelectMovie} >	
-                    Delete
+            <div className="card-meta">Year:{movie.Year}</div>
+            <div className="card-meta">Runtime:{movie.Runtime}</div>
+            <div className="card-meta">Genre:{movie.Genre}</div>
+            <div className="card-meta">Director:{movie.Director}</div>
+            <div className="buttons">
+                <button data-toggle="modal" data-target="#deleteModal" id="btn-delete" title="Delete the movie" value={index} onClick={this.onSelectMovie} >	
+                  Delete
                 </button>
-                <button data-toggle="modal" data-target="#editModal" id="send-open" value={index} className="floating-send scroll-fadeout" aria-label="edit movie" onClick={this.onSelectMovie} >	
-                    Edit
+                <button data-toggle="modal" data-target="#editModal" id="btn-edit" title="Edit the movie" value={index} onClick={this.onSelectMovie} >	
+                  Edit
                 </button> 
             </div>
           </div>  
