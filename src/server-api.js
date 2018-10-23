@@ -4,7 +4,7 @@ const uuidv1 = require('uuid/v1');
         let movieInfo;
         let movies = [];
         for(let i=0; i<namesAr.length; i++){
-            movieInfo = await get('http://www.omdbapi.com/?t='+namesAr[i]+'&apikey=f271ffa5');
+            movieInfo = await get('https://www.omdbapi.com/?t='+namesAr[i]+'&apikey=f271ffa5');
             movieInfo.id = uuidv1();
             let iMovie = Object.assign({}, {id:movieInfo.id}, {Title:movieInfo.Title}, {Year:movieInfo.Year},{Runtime:movieInfo.Runtime}, {Genre:movieInfo.Genre}, {Director:movieInfo.Director});
             movies.push(iMovie);
