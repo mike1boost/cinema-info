@@ -2,27 +2,27 @@
  body{
 	 font-family: Arial, Helvetica, sans-serif;
 	 font-size: 16px;
-	background: rgba(232, 238, 238, 1);
+   background: rgba(232, 238, 238, 1);
  } 
   .App-header {
-	text-align: center;
-	background-color: #222;
-	padding: 40px;
-	margin: 20px;
-	color: white;
+		text-align: center;
+		background-color: #222;
+		padding: 40px;
+		margin: 20px;
+		color: white;
   }
   
   h1.App-title {
-	font-size: 1.5em;
-	margin: 0;
+		font-size: 1.5em;
+		margin: 0;
   }
 
   .container {
-	color: white;
+		color: white;
   }
   ul.cards{
-	list-style: none;
-	padding: 0;
+		list-style: none;
+		padding: 0;
 	}
 
   li.card {
@@ -33,19 +33,21 @@
   .card-in{
 		display: flex;
 		flex-direction: column;
-	height: 100%;
-	border: #222 3px solid;
-	background: rgba(24, 22, 22, 0.801);
+		height: 100%;
+		border: #222 3px solid;
+		background: rgba(24, 22, 22, 0.801);
   }
   img{
-	width: 100%;
-}
+			width: 100%;
+			max-width: 100%;
+			flex-shrink: 0;
+  }
 .card-title {
 	flex: 1 0 auto;
 	padding: 15px 15px 0 15px;
 	font-size: 20px;
 	color: rgb(115, 129, 247);
-  }
+}
 
   .card-details{
 	  padding: 15px;
